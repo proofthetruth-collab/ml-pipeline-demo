@@ -20,11 +20,9 @@ def clean_data(df, numeric_columns, categorical_columns):
     df = df.copy()
 
     # Fill numeric missing values with median
-
-    # Bug: filling with 0 instead of median
     for col in numeric_columns:
         if col in df.columns:
-            df[col] = df[col].fillna(0)  # this was df[col].median()
+              df[col] = df[col].fillna(df[col].median())
 
     # Fill categorical missing values with mode
     for col in categorical_columns:
